@@ -1,7 +1,13 @@
+import Footer from "./Footer";
+import Header from "./Header";
+import Main from "./Main";
+
 const MyPage = () => {
   return (
-    <div>
-      <h2>Mi página</h2>
+    <div className="myPage">
+      <Header />
+      <Main />
+      <Footer />
     </div>
   );
 };
