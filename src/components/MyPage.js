@@ -7,9 +7,12 @@ const initialTheme = "light";
 
 const MyPage = () => {
   const [theme, setTheme] = useState(initialTheme);
+  const handleTheme = (e) => {
+    console.log(e);
+  };
   return (
     <div className="myPage">
-      <Header theme={theme} />
+      <Header theme={theme} handleTheme={handleTheme} />
       <Main theme={theme} />
       <Footer theme={theme} />
     </div>
