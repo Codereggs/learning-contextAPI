@@ -5,6 +5,7 @@ import Main from "./Main";
 
 const initialTheme = "light";
 const initialLanguage = "es";
+const initialAuth = false;
 const translations = {
   es: {
     headerTitle: "Mi aplicación SIN Context API",
@@ -36,7 +37,8 @@ const MyPage = () => {
   const [theme, setTheme] = useState(initialTheme);
   const [language, setLanguage] = useState(initialLanguage);
   const [texts, setTexts] = useState(translations[language]);
-  console.log(texts);
+  const [auth, setAuth] = useState(initialAuth);
+  //console.log(texts);
 
   const handleTheme = (e) => {
     console.log(e.target.value);
@@ -46,7 +48,20 @@ const MyPage = () => {
       setTheme("dark");
     }
   };
-  const handleLanguage = (e) => {};
+  const handleLanguage = (e) => {
+    // console.log(e.target.value);
+    if (e.target.value === "es") {
+      setLanguage("es");
+      setTexts(translations["es"]);
+    } else {
+      setLanguage("en");
+      setTexts(translations["en"]);
+    }
+  };
+  const handleAuth = () => {
+    if (auth) setAuth(false);
+    else setAuth(true);
+  };
   return (
     <div className="myPage">
       <Header
@@ -54,8 +69,10 @@ const MyPage = () => {
         handleTheme={handleTheme}
         texts={texts}
         handleLanguage={handleLanguage}
+        auth={auth}
+        handleAuth={handleAuth}
       />
-      <Main theme={theme} texts={texts} />
+      <Main theme={theme} texts={texts} auth={auth} />
       <Footer theme={theme} texts={texts} />
     </div>
   );
