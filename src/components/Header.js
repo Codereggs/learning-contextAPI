@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header>
+    <header className="dark">
       <h2>Mi Aplicación sin Context API</h2>
       <h3>Mi cabecera</h3>
       <select name="language">

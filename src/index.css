@@ -1,1 +1,13 @@
 @import-normalize;
+
+.myPage {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 70%;
+  background-color: #ccc;
+}
+
+.dark {
+  background-color: #fff;
+  filter: invert(1);
+}
