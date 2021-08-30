@@ -1,6 +1,6 @@
-const Main = () => {
+const Main = ({ theme }) => {
   return (
-    <main>
+    <main className={theme}>
       <p>Bienvenido Invitad@ </p>
       <p>Hola Usuari@</p>
       <p>Mi contenido principal.</p>

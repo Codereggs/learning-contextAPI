@@ -1,6 +1,6 @@
-const Header = () => {
+const Header = ({ theme }) => {
   return (
-    <header className="dark">
+    <header className={theme}>
       <h2>Mi Aplicación sin Context API</h2>
       <h3>Mi cabecera</h3>
       <select name="language">
