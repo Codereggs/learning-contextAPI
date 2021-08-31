@@ -6,8 +6,6 @@ import HeaderContext from "./HeaderContext";
 import MainContext from "./MainContext";
 
 const MyPageContext = () => {
-  //console.log(texts);
-
   return (
     <div className="myPage">
       <ThemeProvider>
