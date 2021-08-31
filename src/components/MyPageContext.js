@@ -1,14 +1,14 @@
 import { useState } from "react";
-import Footer from "./Footer";
-import Header from "./Header";
-import Main from "./Main";
+import { ThemeProvider } from "../context/ThemeContext";
+import FooterContext from "./FooterContext";
+import HeaderContext from "./HeaderContext";
+import MainContext from "./MainContext";
 
-const initialTheme = "light";
 const initialLanguage = "es";
 const initialAuth = false;
 const translations = {
   es: {
-    headerTitle: "Mi aplicación SIN Context API",
+    headerTitle: "Mi aplicación con Context API",
     headerSubtitle: "Mi cabecera",
     headerLight: "Claro",
     headerDark: "Oscuro",
@@ -20,7 +20,7 @@ const translations = {
     footerTitle: "Mi pié de página",
   },
   en: {
-    headerTitle: "My application without Context API",
+    headerTitle: "My application withContext API",
     headerSubtitle: "My header",
     headerLight: "Light",
     headerDark: "Dark",
@@ -33,21 +33,12 @@ const translations = {
   },
 };
 
-const MyPage = () => {
-  const [theme, setTheme] = useState(initialTheme);
+const MyPageContext = () => {
   const [language, setLanguage] = useState(initialLanguage);
   const [texts, setTexts] = useState(translations[language]);
   const [auth, setAuth] = useState(initialAuth);
   //console.log(texts);
 
-  const handleTheme = (e) => {
-    //console.log(e.target.value);
-    if (e.target.value === "light") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  };
   const handleLanguage = (e) => {
     // console.log(e.target.value);
     if (e.target.value === "es") {
@@ -64,18 +55,18 @@ const MyPage = () => {
   };
   return (
     <div className="myPage">
-      <Header
-        theme={theme}
-        handleTheme={handleTheme}
-        texts={texts}
-        handleLanguage={handleLanguage}
-        auth={auth}
-        handleAuth={handleAuth}
-      />
-      <Main theme={theme} texts={texts} auth={auth} />
-      <Footer theme={theme} texts={texts} />
+      <ThemeProvider>
+        <HeaderContext
+          texts={texts}
+          handleLanguage={handleLanguage}
+          auth={auth}
+          handleAuth={handleAuth}
+        />
+        <MainContext texts={texts} auth={auth} />
+        <FooterContext texts={texts} />
+      </ThemeProvider>
     </div>
   );
 };
 
-export default MyPage;
+export default MyPageContext;
